@@ -41,6 +41,19 @@ public class LinkList {
     }
   }
 
+  public static LinkList create(int[] elements) {
+    return createInner(elements, 0);
+  }
+
+  static LinkList createInner(int[] elements, int index) {
+    if (elements.length == index)
+      return new LinkList();
+
+    LinkList linkList = createInner(elements, index + 1);
+    linkList.addFirst(elements[index]);
+    return linkList;
+  }
+
   private Node head;
 
   LinkList() {

@@ -63,4 +63,24 @@ public class LinkListTest {
     // ASSERT
     assertThat(value).isEqualTo("[2,1]");
   }
+
+  @Test
+  public void linkList_emptyArrayToList() {
+    int[] arr = new int[] {};
+
+
+    LinkList linkList = LinkList.create(arr);
+
+    assertThat(linkList.toString()).isEqualTo("[]");
+  }
+
+  @Test
+  public void linkList_nonEmptyArrayToList() {
+    int[] arr = new int[] {1, 2, 3};
+
+
+    LinkList linkList = LinkList.create(arr);
+
+    assertThat(linkList.toString()).isEqualTo("[1,2,3]");
+  }
 }
