@@ -18,6 +18,8 @@ package uk.ac.cam.jrs237.linkedlists;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -78,9 +80,27 @@ public class LinkListTest {
   public void linkList_nonEmptyArrayToList() {
     int[] arr = new int[] {1, 2, 3};
 
-
     LinkList linkList = LinkList.create(arr);
 
     assertThat(linkList.toString()).isEqualTo("[1,2,3]");
+  }
+
+  @Test(expected = NoSuchElementException.class)
+  public void linkList_removeFirstEmptyException() {
+    LinkList linkList = new LinkList();
+    
+    linkList.removeFirst();
+  }
+
+  @Test
+  public void linkList_removeFirstEmptyNoException() {
+    LinkList linkList = new LinkList();
+
+    linkList.addFirst(5);
+    int result = linkList.removeFirst();
+    String remaining = linkList.toString();
+
+    assertThat(result).isEqualTo(5);
+    assertThat(remaining).isEqualTo("[]");
   }
 }

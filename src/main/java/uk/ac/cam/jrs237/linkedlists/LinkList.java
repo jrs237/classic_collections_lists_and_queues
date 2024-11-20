@@ -16,6 +16,8 @@
 
 package uk.ac.cam.jrs237.linkedlists;
 
+import java.util.NoSuchElementException;
+
 public class LinkList {
 
   private static class Node {
@@ -66,6 +68,15 @@ public class LinkList {
     } else {
       head = new Node(element, head);
     }
+  }
+
+  int removeFirst() {
+    if (head == null)
+      throw new NoSuchElementException();
+
+    int value = head.value;
+    head = head.next;
+    return value;
   }
 
   @Override
