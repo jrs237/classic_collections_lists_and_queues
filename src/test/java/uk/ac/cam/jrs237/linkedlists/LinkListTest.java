@@ -139,4 +139,23 @@ public class LinkListTest {
 
     linkList.get(2);
   }
+
+  @Test
+  public void linkList_emptyLength() {
+    LinkList linkList = new LinkList();
+
+    int len = linkList.length();
+
+    assertThat(len).isEqualTo(0);
+  }
+
+  @Test
+  public void linkList_nonEmptyLength() {
+    LinkList linkList = new LinkList();
+    linkList.addFirst(1);
+
+    int len = linkList.length();
+
+    assertThat(len).isEqualTo(1);
+  }
 }

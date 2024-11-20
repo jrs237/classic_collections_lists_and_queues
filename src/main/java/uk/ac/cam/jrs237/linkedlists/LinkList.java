@@ -95,6 +95,18 @@ public class LinkList {
     return pointer.value;
   }
 
+  int length() {
+    Node pointer = head;
+    int i = 0;
+
+    while(pointer != null) {
+      pointer = pointer.next;
+      i++;
+    }
+
+    return i;
+  }
+
   @Override
   public String toString() {
     return String.format("[%s]", head == null ? "" : head.toString());
