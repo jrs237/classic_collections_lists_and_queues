@@ -70,7 +70,6 @@ public class LinkListTest {
   public void linkList_emptyArrayToList() {
     int[] arr = new int[] {};
 
-
     LinkList linkList = LinkList.create(arr);
 
     assertThat(linkList.toString()).isEqualTo("[]");
@@ -95,12 +94,49 @@ public class LinkListTest {
   @Test
   public void linkList_removeFirstEmptyNoException() {
     LinkList linkList = new LinkList();
-
     linkList.addFirst(5);
+
     int result = linkList.removeFirst();
     String remaining = linkList.toString();
 
     assertThat(result).isEqualTo(5);
     assertThat(remaining).isEqualTo("[]");
+  }
+
+  @Test
+  public void linkList_getFirst() {
+    LinkList linkList = new LinkList();
+    linkList.addFirst(1);
+
+    int result = linkList.get(0);
+
+    assertThat(result).isEqualTo(1);
+  }
+
+  @Test(expected = NoSuchElementException.class)
+  public void linkList_getFirstOutOfBounds() {
+    LinkList linkList = new LinkList();
+
+    linkList.get(0);
+  }
+
+  @Test
+  public void linkList_get() {
+    LinkList linkList = new LinkList();
+    linkList.addFirst(2);
+    linkList.addFirst(1);
+
+    int result = linkList.get(1);
+
+    assertThat(result).isEqualTo(2);
+  }
+
+  @Test(expected = NoSuchElementException.class)
+  public void linkList_getOutOfBounds() {
+    LinkList linkList = new LinkList();
+    linkList.addFirst(1);
+    linkList.addFirst(2);
+
+    linkList.get(2);
   }
 }

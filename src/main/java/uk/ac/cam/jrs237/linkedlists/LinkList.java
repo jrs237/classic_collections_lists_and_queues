@@ -79,6 +79,22 @@ public class LinkList {
     return value;
   }
 
+  int get(int elem) {
+    Node pointer = head;
+
+    if (pointer == null)
+      throw new NoSuchElementException();
+
+    for (int item = 0; item < elem; item++) {
+      pointer = pointer.next;
+
+      if (pointer == null)
+        throw new NoSuchElementException();
+    }
+
+    return pointer.value;
+  }
+
   @Override
   public String toString() {
     return String.format("[%s]", head == null ? "" : head.toString());
